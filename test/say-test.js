@@ -23,7 +23,7 @@ test('SSML', t => {
     version: '1.0',
     response: {
       shouldEndSession: true,
-      outputSpeech: { type: 'SSML', ssml: '<speak><p/>Hello World. <p/>What do you want to do today?</speak>' }
+      outputSpeech: { type: 'SSML', ssml: '<speak><p>Hello World.</p> <p>What do you want to do today?</p></speak>' }
     }
   });
 });

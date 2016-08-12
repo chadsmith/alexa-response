@@ -32,20 +32,6 @@ var createClass = function () {
   };
 }();
 
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
 var objectWithoutProperties = function (obj, keys) {
   var target = {};
 
@@ -85,8 +71,8 @@ var Response = function () {
   }, {
     key: 'say',
     value: function say(text, type) {
-      return new Response(_extends({}, this.state, {
-        response: _extends({}, this.state.response, {
+      return new Response(Object.assign({}, this.state, {
+        response: Object.assign({}, this.state.response, {
           shouldEndSession: true
         }, outputSpeech(text, type))
       }));
@@ -94,9 +80,9 @@ var Response = function () {
   }, {
     key: 'reprompt',
     value: function reprompt(text, type) {
-      return new Response(_extends({}, this.state, {
-        response: _extends({}, this.state.response, {
-          reprompt: _extends({}, outputSpeech(text, type))
+      return new Response(Object.assign({}, this.state, {
+        response: Object.assign({}, this.state.response, {
+          reprompt: Object.assign({}, outputSpeech(text, type))
         })
       }));
     }
@@ -107,24 +93,24 @@ var Response = function () {
       var type = _ref$type === undefined ? CardType.Simple : _ref$type;
       var rest = objectWithoutProperties(_ref, ['type']);
 
-      return new Response(_extends({}, this.state, {
-        response: _extends({}, this.state.response, {
-          card: _extends({}, rest, type && { type: type })
+      return new Response(Object.assign({}, this.state, {
+        response: Object.assign({}, this.state.response, {
+          card: Object.assign({}, rest, type && { type: type })
         })
       }));
     }
   }, {
     key: 'attributes',
     value: function attributes(data) {
-      return new Response(_extends({}, this.state, {
-        sessionAttributes: _extends({}, this.state.sessionAttributes, data)
+      return new Response(Object.assign({}, this.state, {
+        sessionAttributes: Object.assign({}, this.state.sessionAttributes, data)
       }));
     }
   }, {
     key: 'shouldEndSession',
     value: function shouldEndSession(_shouldEndSession) {
-      return new Response(_extends({}, this.state, {
-        response: _extends({}, this.state.response, {
+      return new Response(Object.assign({}, this.state, {
+        response: Object.assign({}, this.state.response, {
           shouldEndSession: _shouldEndSession
         })
       }));
@@ -132,13 +118,13 @@ var Response = function () {
   }, {
     key: 'build',
     value: function build(attributes) {
-      return _extends({
+      return Object.assign({
         version: '1.0'
       }, this.state, {
-        response: _extends({
+        response: Object.assign({
           shouldEndSession: true
         }, this.state.response)
-      }, attributes || this.state.sessionAttributes ? { sessionAttributes: _extends({}, attributes, this.state.sessionAttributes) } : null);
+      }, attributes || this.state.sessionAttributes ? { sessionAttributes: Object.assign({}, attributes, this.state.sessionAttributes) } : null);
     }
   }]);
   return Response;
