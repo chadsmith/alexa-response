@@ -28,7 +28,7 @@
     "lambda"
   ],
   "dependencies": {
-    "alexa-ssml": "^0.5.0"
+    "alexa-ssml": "git://github.com/chadsmith/alexa-ssml.git#improvements"
   },
   "devDependencies": {
     "ava": "^0.14.0",

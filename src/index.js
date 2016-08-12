@@ -1,4 +1,4 @@
-import { ssml, renderToString } from 'alexa-ssml';
+import { ssml, render } from 'alexa-ssml';
 
 export const CardType = {
   LinkAccount: 'LinkAccount',
@@ -108,7 +108,7 @@ export default class Response {
 
 const outputSpeech = (text, type = SpeechType.PlainText) => {
   if (type === SpeechType.SSML || typeof text === 'object') {
-    const speech = (typeof text === 'object') ? renderToString(text) : text;
+    const speech = (typeof text === 'object') ? render(text) : text;
     return { outputSpeech: { type: SpeechType.SSML, ssml: speech } };
   } else {
     return { outputSpeech: { type, text } };
